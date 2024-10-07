@@ -10,24 +10,25 @@ public class GameOfLife : MonoBehaviour
     private float Cellsize = 0.05f; // Desired size of each square (width and height)
     GameObject[,] myCells; // Array of cells
     
-    public Slider frameslider;
+    public Slider frameSlider;
 
     int numberOfColumns, numberOfRows;
     private bool alive;
+
+    float CamHeight = Camera.main.orthographicSize * 2f;
+    float CamWidth = Camera.main.orthographicSize * Camera.main.aspect * 2f;
 
     //HEADER for inspector see more clearly etc.
     [Header("Speed of Simulation")]
     //framerate of simulation
     [Range(10, 100)]
     public int Framerate;
+    
 
     // Start is called before the first frame update 
     void Start()
     {
         Debug.Log(Spawnchance);
-        
-        float CamHeight = Camera.main.orthographicSize * 2f;
-        float CamWidth = Camera.main.orthographicSize * Camera.main.aspect * 2f;
 
         // Automatically calculate the number of squares that fit in the camera bounds
         numberOfColumns = (int)Mathf.Floor(CamWidth / Cellsize) + 1;
@@ -35,14 +36,18 @@ public class GameOfLife : MonoBehaviour
 
         myCells = new GameObject[numberOfColumns, numberOfRows];
 
+        frameSlider.value = Framerate; //makes the slider the framerate the value
+
+        InitializeGrid();     
+    }
+
+    private void InitializeGrid()
+    {
         //Create a blank texture
         var texture = new Texture2D(32, 32);
 
         //  Calculated pixelsPerUnit to match squareSize
         float pixelsPerUnit = texture.width / Cellsize; //how many pixels fits in 1 unity meter
-
-        frameslider.value = Framerate; //makes the slider the framerate the value
-
 
         for (int x = 0; x < numberOfColumns; x++)
         {
@@ -70,7 +75,6 @@ public class GameOfLife : MonoBehaviour
                 newObj.transform.position = new Vector3(posX, posY, 0);
 
                 //Random check to see if it should be alive
-               
                 if (Random.Range(0, 100) > Spawnchance)
                 {
                     myCells[x, y].SetActive(false);
@@ -79,7 +83,7 @@ public class GameOfLife : MonoBehaviour
                 {
                     myCells[x, y].SetActive(true);
                 }
-        
+
             }
 
         }
@@ -87,7 +91,7 @@ public class GameOfLife : MonoBehaviour
 
     void Update()
     {
-        Application.targetFrameRate = (int)frameslider.value; //framerate of simulation Go faster or slower.
+        Application.targetFrameRate = (int)frameSlider.value; //framerate of simulation Go faster or slower.
 
         bool[,] nextGeneration = new bool[numberOfColumns, numberOfRows];
 
@@ -111,7 +115,6 @@ public class GameOfLife : MonoBehaviour
                     {
                         nextGeneration[x, y] = true; // Cell lives
                         myCells[x, y].GetComponent<SpriteRenderer>().color = Color.blue; //live longer seems like
-
                     }
 
                 }

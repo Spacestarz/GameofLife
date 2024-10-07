@@ -1004,6 +1004,7 @@ GameObject:
   - component: {fileID: 1066318373}
   - component: {fileID: 1066318375}
   - component: {fileID: 1066318374}
+  - component: {fileID: 1066318376}
   m_Layer: 5
   m_Name: Pixels will die teext
   m_TagString: Untagged
@@ -1037,7 +1038,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066318372}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1059,7 +1060,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278519128
+    rgba: 268764504
   m_fontColor: {r: 0.3433962, g: 0.02008542, b: 0.02008542, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1127,6 +1128,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066318372}
   m_CullTransparentMesh: 1
+--- !u!95 &1066318376
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066318372}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7af93e41702fdcd4d9fa6c6c376e0777, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1079446308
 GameObject:
   m_ObjectHideFlags: 0

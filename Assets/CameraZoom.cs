@@ -20,18 +20,12 @@ public class CameraZoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //TO DO ZOOM IN ON MOUSE POS
-        //Mouse pos to  world point
-        
-        
-        // Capture scroll wheel input
+      // Capture scroll wheel input
         float scroll = Input.mouseScrollDelta.y;
 
         // Only apply zoom if there's scrolling input
         if (scroll != 0)
         {
-
             // Get the mouse position in world space before zooming
             Vector3 mousePositionBeforeZoom = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -45,7 +39,6 @@ public class CameraZoom : MonoBehaviour
 
             // Calculate the difference in position and move the camera
             Camera.main.transform.position += mousePositionBeforeZoom - mousePositionAfterZoom;
-
 
         }
 
